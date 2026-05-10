@@ -19,79 +19,12 @@ const route = useRoute()
 
         <nav class="sidebar-nav">
           <NuxtLink
-            to="/"
+            to="/blog"
             class="nav-row"
-            :class="{
-              'nav-row--active':
-                route.path === '/' || route.path === '/admin',
-            }"
+            :class="{ 'nav-row--active': route.path.startsWith('/blog') }"
           >
-            <i class="fas fa-th-large"></i>
-            <span>Dashboard</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/profile"
-            class="nav-row"
-            :class="{ 'nav-row--active': route.path === '/profile' }"
-          >
-            <i class="fas fa-user-circle"></i>
-            <span>Profile</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/categories"
-            class="nav-row"
-            :class="{
-              'nav-row--active': route.path.startsWith('/categories'),
-            }"
-          >
-            <i class="fas fa-tags"></i>
-            <span>Categories</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/transactions"
-            class="nav-row"
-            :class="{
-              'nav-row--active': route.path.startsWith('/transactions'),
-            }"
-          >
-            <i class="fas fa-exchange-alt"></i>
-            <span>Transactions</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/goals"
-            class="nav-row"
-            :class="{
-              'nav-row--active': route.path.startsWith('/goals'),
-            }"
-          >
-            <i class="fas fa-bullseye"></i>
-            <span>Goals</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/admin/users"
-            class="nav-row"
-            :class="{
-              'nav-row--active': route.path.startsWith('/admin/users'),
-            }"
-          >
-            <i class="fas fa-users"></i>
-            <span>Users</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/admin/reports"
-            class="nav-row"
-            :class="{
-              'nav-row--active': route.path.startsWith('/admin/reports'),
-            }"
-          >
-            <i class="fas fa-file-alt"></i>
-            <span>Reports</span>
+            <i class="fas fa-newspaper"></i>
+            <span>Blog</span>
           </NuxtLink>
         </nav>
       </aside>
@@ -100,7 +33,7 @@ const route = useRoute()
         <header class="top-header">
           <div class="top-header-inner">
             <h1 class="page-title">
-              {{ (route.meta.title as string) || 'Dashboard' }}
+              {{ (route.meta.title as string) || 'FinTrack' }}
             </h1>
           </div>
         </header>
