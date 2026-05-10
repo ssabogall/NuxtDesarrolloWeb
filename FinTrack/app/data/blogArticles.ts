@@ -1,5 +1,6 @@
 export type BlogArticle = {
   id: number
+  topic: string
   title: string
   summary: string
   bodyParagraphs: string[]
@@ -8,6 +9,7 @@ export type BlogArticle = {
 export const blogArticles: readonly BlogArticle[] = [
   {
     id: 1,
+    topic: 'Categories',
     title:
       'Income/expense categories: the first step before recording transactions',
     summary:
@@ -20,6 +22,7 @@ export const blogArticles: readonly BlogArticle[] = [
   },
   {
     id: 2,
+    topic: 'Transactions',
     title:
       'Transactions linked to categories and goals: how it maps to your data model',
     summary:
@@ -32,6 +35,7 @@ export const blogArticles: readonly BlogArticle[] = [
   },
   {
     id: 3,
+    topic: 'Goals',
     title:
       'Financial goals: targetAmount, currentAmount, and the user as aggregate root',
     summary:
