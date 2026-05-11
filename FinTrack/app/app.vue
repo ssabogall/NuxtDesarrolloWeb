@@ -26,6 +26,15 @@ const route = useRoute()
             <i class="fas fa-newspaper"></i>
             <span>Blog</span>
           </NuxtLink>
+
+          <NuxtLink
+            to="/recursos"
+            class="nav-row"
+            :class="{ 'nav-row--active': route.path.startsWith('/recursos') }"
+          >
+            <i class="fas fa-sparkles"></i>
+            <span>Recursos</span>
+          </NuxtLink>
         </nav>
       </aside>
 
