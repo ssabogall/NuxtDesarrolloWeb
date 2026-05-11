@@ -9,14 +9,14 @@ export default defineNuxtConfig({
     '/blog/**': { prerender: true },
     '/': { ssr: true },
     '/about': { ssr: false },
-    '/recursos': { ssr: false },
-    '/recursos/**': { ssr: false },
     // Categories — SSR por petición (datos pueden cambiar en el futuro)
     '/categories': { ssr: true },
     '/categories/**': { ssr: true },
     // Transactions — SSR por petición
     '/transactions': { ssr: true },
     '/transactions/**': { ssr: true },
+    '/resources': { ssr: false },
+    '/resources/**': { ssr: false },
   },
 
   nitro: {
