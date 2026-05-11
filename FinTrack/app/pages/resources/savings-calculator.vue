@@ -12,19 +12,19 @@ const months = ref<number>(12)
 
 const scenarios: readonly SavingsScenario[] = [
   {
-    label: 'Ahorro de emergencia',
+    label: 'Emergency fund',
     initialAmount: 100,
     monthlyContribution: 200,
     months: 18,
   },
   {
-    label: 'Viaje corto',
+    label: 'Short trip',
     initialAmount: 0,
     monthlyContribution: 350,
     months: 8,
   },
   {
-    label: 'Compra importante',
+    label: 'Big purchase',
     initialAmount: 500,
     monthlyContribution: 400,
     months: 10,
@@ -42,12 +42,12 @@ function applyScenario(scenario: SavingsScenario): void {
 }
 
 useSeoMeta({
-  title: 'Calculadora de ahorro - FinTrack',
+  title: 'Savings calculator - FinTrack',
   description: 'A tiny client-side calculator for savings planning.',
 })
 
 definePageMeta({
-  title: 'Calculadora de ahorro',
+  title: 'Savings calculator',
   ssr: false,
 })
 </script>
@@ -57,18 +57,18 @@ definePageMeta({
     <p class="mb-4 mb-lg-5">
       <NuxtLink
         class="link-back text-decoration-none"
-        to="/recursos"
+        to="/resources"
       >
-        ← Recursos
+        ← Resources
       </NuxtLink>
     </p>
 
     <header class="calculator-hero mb-5">
-      <p class="mb-3 meta-line">Subruta interactiva</p>
-      <h1 class="mb-4 title-head">Calculadora de ahorro</h1>
+      <p class="mb-3 meta-line">Interactive subroute</p>
+      <h1 class="mb-4 title-head">Savings calculator</h1>
       <div class="accent-rule" aria-hidden="true" />
       <p class="mb-0 mt-5 lead-soft">
-        Ajusta el ahorro inicial, la contribución mensual y la cantidad de meses para ver el total proyectado.
+        Adjust the initial amount, monthly contribution, and number of months to see the projected total.
       </p>
     </header>
 
@@ -81,7 +81,7 @@ definePageMeta({
                 class="form-label field-label"
                 for="initialAmount"
               >
-                Aporte inicial
+                Initial amount
               </label>
               <input
                 id="initialAmount"
@@ -98,7 +98,7 @@ definePageMeta({
                 class="form-label field-label"
                 for="monthlyContribution"
               >
-                Aporte mensual
+                Monthly contribution
               </label>
               <input
                 id="monthlyContribution"
@@ -115,7 +115,7 @@ definePageMeta({
                 class="form-label field-label"
                 for="months"
               >
-                Meses
+                Months
               </label>
               <input
                 id="months"
@@ -129,7 +129,7 @@ definePageMeta({
           </div>
 
           <div class="scenario-list mt-4">
-            <p class="mb-3 scenario-kicker">Ejemplos rápidos</p>
+            <p class="mb-3 scenario-kicker">Quick examples</p>
             <div class="d-flex flex-wrap gap-2">
               <button
                 v-for="scenario in scenarios"
@@ -147,29 +147,29 @@ definePageMeta({
 
       <div class="col-12 col-xl-5">
         <div class="result-panel h-100">
-          <p class="mb-2 result-kicker">Resultado</p>
+          <p class="mb-2 result-kicker">Result</p>
           <p class="mb-3 result-value">
-            ${{ projectedTotal.toLocaleString('es-CO') }}
+            ${{ projectedTotal.toLocaleString('en-US') }}
           </p>
           <p class="mb-4 result-copy">
-            Ese es el monto proyectado al final del periodo con la configuración actual.
+            That is the projected amount at the end of the period.
           </p>
 
           <div class="result-grid">
             <div class="result-item">
-              <span class="result-label">Inicial</span>
+              <span class="result-label">Initial</span>
               <strong class="result-number">
-                ${{ initialAmount.toLocaleString('es-CO') }}
+                ${{ initialAmount.toLocaleString('en-US') }}
               </strong>
             </div>
             <div class="result-item">
-              <span class="result-label">Mensual</span>
+              <span class="result-label">Monthly</span>
               <strong class="result-number">
-                ${{ monthlyContribution.toLocaleString('es-CO') }}
+                ${{ monthlyContribution.toLocaleString('en-US') }}
               </strong>
             </div>
             <div class="result-item">
-              <span class="result-label">Meses</span>
+              <span class="result-label">Months</span>
               <strong class="result-number">{{ months }}</strong>
             </div>
           </div>

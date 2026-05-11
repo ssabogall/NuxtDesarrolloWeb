@@ -28,12 +28,12 @@ const route = useRoute()
           </NuxtLink>
 
           <NuxtLink
-            to="/recursos"
+            to="/resources"
             class="nav-row"
-            :class="{ 'nav-row--active': route.path.startsWith('/recursos') }"
+            :class="{ 'nav-row--active': route.path.startsWith('/resources') }"
           >
             <i class="fas fa-sparkles"></i>
-            <span>Recursos</span>
+            <span>Resources</span>
           </NuxtLink>
         </nav>
       </aside>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  title: 'Texto simple',
+  title: 'Simple text',
   ssr: false,
 })
 
 useSeoMeta({
-  title: 'Texto simple - Recursos',
+  title: 'Simple text - Resources',
   description: 'A short text page rendered entirely on the client.',
 })
 </script>
@@ -15,27 +15,27 @@ useSeoMeta({
     <p class="mb-4 mb-lg-5">
       <NuxtLink
         class="link-back text-decoration-none"
-        to="/recursos"
+        to="/resources"
       >
-        ← Recursos
+        ← Resources
       </NuxtLink>
     </p>
 
     <header class="article-hero mb-5">
-      <p class="mb-3 meta-line">Subruta de texto</p>
-      <h1 class="mb-4 title-head">Texto simple</h1>
+      <p class="mb-3 meta-line">Text subroute</p>
+      <h1 class="mb-4 title-head">Simple text</h1>
       <div class="accent-rule" aria-hidden="true" />
       <p class="mb-0 mt-5 lead-soft">
-        Esta página existe para demostrar una subruta ligera, útil como ejemplo de contenido estático que todavía vive dentro de una navegación CSR.
+        This page exists to demonstrate a lightweight subroute, useful as an example of static content that still lives inside a CSR navigation.
       </p>
     </header>
 
     <div class="body-copy">
       <p class="mb-4 para">
-        En una aplicación Nuxt, una sección puede cambiar a cliente solamente usando reglas de ruta o metadatos de página. Eso permite que el resto del sitio siga con SSR mientras esta parte se comporta como una SPA.
+        In a Nuxt app, a section can switch to client-only rendering using route rules or page metadata. That lets the rest of the site keep SSR while this part behaves like a SPA.
       </p>
       <p class="mb-4 para">
-        Aquí usamos una ruta principal con dos subrutas: una textual y otra interactiva.
+        Here we use a main route with two subroutes: one text-based and one interactive.
       </p>
     </div>
   </article>
