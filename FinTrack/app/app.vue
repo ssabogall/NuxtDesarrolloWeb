@@ -35,6 +35,16 @@ const route = useRoute()
             <i class="fas fa-sparkles"></i>
             <span>Recursos</span>
           </NuxtLink>
+
+          <!-- Categories — nueva sección SSR -->
+          <NuxtLink
+            to="/categories"
+            class="nav-row"
+            :class="{ 'nav-row--active': route.path.startsWith('/categories') }"
+          >
+            <i class="fas fa-tags"></i>
+            <span>Categories</span>
+          </NuxtLink>
         </nav>
       </aside>
 
