@@ -14,6 +14,9 @@ export default defineNuxtConfig({
     // Categories — SSR por petición (datos pueden cambiar en el futuro)
     '/categories': { ssr: true },
     '/categories/**': { ssr: true },
+    // Transactions — SSR por petición
+    '/transactions': { ssr: true },
+    '/transactions/**': { ssr: true },
   },
 
   nitro: {

@@ -108,6 +108,14 @@ export function getCategoryBySlug(slug: string): Category | undefined {
   return _categories.find((c) => c.slug === slug)
 }
 
+export function getTransactions(): readonly Transaction[] {
+  return _transactions
+}
+
+export function getTransactionById(id: number): Transaction | undefined {
+  return _transactions.find((t) => t.id === id)
+}
+
 export function getTransactionsBySlug(slug: string): readonly Transaction[] {
   return _transactions.filter((t) => t.categorySlug === slug)
 }
