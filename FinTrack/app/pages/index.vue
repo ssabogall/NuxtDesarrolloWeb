@@ -47,7 +47,7 @@
           <p class="feature-description">
             Plan your savings goals with our tool.
           </p>
-          <NuxtLink to="/resources/savings-calculator" class="feature-link">
+          <NuxtLink to="/calculator" class="feature-link">
             Calculate savings →
           </NuxtLink>
         </div>
