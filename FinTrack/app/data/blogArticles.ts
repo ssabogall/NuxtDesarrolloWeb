@@ -9,41 +9,38 @@ export type BlogArticle = {
 export const blogArticles: readonly BlogArticle[] = [
   {
     id: 1,
-    topic: 'Categories',
-    title:
-      'Income/expense categories: the first step before recording transactions',
+    topic: 'Budgeting',
+    title: 'How to build a monthly budget that actually works',
     summary:
-      'Categories tie your movements to their owning user through name, color, and type (income/expense). That keeps your dashboard aligned with the domain model.',
+      'A practical budget gives you clarity on income, expenses, and the small adjustments that keep your money aligned with your priorities.',
     bodyParagraphs: [
-      'In FinTrack every category has an id, name, color, and type, and belongs to a user who owns that data—in the same sense as your class diagram.',
-      'Defining categories before you log transactions cuts down unclassified loose descriptions and makes it easier to filter by movement type when you build reports.',
-      'Transactions can point to a category or omit one when the model allows it as optional (Category | null), handy for quick adjustments or partial imports.',
+      'Start with a simple structure: list your recurring income, fixed costs, essential spending, and savings targets. When you categorize payments consistently, you can clearly see where your money is going each month.',
+      'Use categories that fit your life, not the other way around. Split expenses into essential, flexible, and discretionary groups so you can reduce or redirect spending without losing control.',
+      'Review your plan weekly and adjust it based on real activity. A budget is not a rulebook, it is a living guide that helps you make smarter decisions before the month ends.',
     ],
   },
   {
     id: 2,
-    topic: 'Transactions',
-    title:
-      'Transactions linked to categories and goals: how it maps to your data model',
+    topic: 'Savings',
+    title: 'Emergency funds: a simple strategy for uncertain times',
     summary:
-      'A transaction stores amount, description, and date; it may tie to a category and, where relevant, to a goal, reflecting the diagram’s relationships.',
+      'An emergency fund is the financial cushion that lets you handle surprises without tapping credit or derailing your goals.',
     bodyParagraphs: [
-      'Transactions are the operational core of the dashboard: each entry has an owning user and may optionally reference a category to separate income and expenses.',
-      'When you also reference a goal (Goal | null), movements explicitly feed progress against targetAmount, consistent with currentAmount across the goal’s lifecycle.',
-      'This keeps a single input model (transactions) while supporting two analytical views: by category for spending habits and by goal for savings or projects.',
+      'Aim for three to six months of essential expenses in a separate savings bucket. Start small if needed, but make the habit automatic by transferring a fixed amount each week or month.',
+      'Keep the fund liquid and easy to access, but avoid using it for normal spending. Treat it as a safety buffer so you can handle repairs, medical bills, or temporary income gaps with confidence.',
+      'Revisit the target regularly: if your monthly costs change, adjust the amount. A sustainable emergency fund grows with your life, not just with your next paycheck.',
     ],
   },
   {
     id: 3,
-    topic: 'Goals',
-    title:
-      'Financial goals: targetAmount, currentAmount, and the user as aggregate root',
+    topic: 'Investing',
+    title: 'Small investments, big habits: getting started right',
     summary:
-      'Goals wrap timeframe, amounts, and status; the user holds categories, transactions, and goals with domain createdAt/updatedAt timestamps.',
+      'Consistent small investments can build lasting wealth when you focus on discipline, diversification, and low fees.',
     bodyParagraphs: [
-      'A goal includes name, description, targetAmount, currentAmount, start and end dates, and a status that reflects whether it is active, paused, or completed in the dashboard.',
-      'Progress relies on linked transactions and business rules (for example calculateProgress) that project what share of the target is already covered.',
-      'The user acts as the aggregation root: they own lists of categories, goals, and transactions, which avoids cross-talk between profiles in a multi-user app.',
+      'You do not need a large balance to begin. Set up recurring contributions to a low-cost index fund or automated investment plan, and let time work for you through compounding.',
+      'Diversify across asset classes and avoid chasing the hottest trend. A balanced portfolio is more about steady progress than perfect timing.',
+      'Review performance occasionally, but resist the urge to react to every market headline. The best investing habits are patient, persistent, and aligned with your long-term goals.',
     ],
   },
 ] as const

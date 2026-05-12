@@ -21,14 +21,14 @@ useSeoMeta({
       <div class="header-line" />
     </header>
 
-    <ul class="list-unstyled m-0 p-0">
+    <ul class="blog-grid list-unstyled m-0 p-0">
       <li
         v-for="article in blogArticles"
         :key="article.id"
       >
         <NuxtLink
           :to="`/blog/${article.id}`"
-          class="post-row d-block text-decoration-none py-5"
+          class="post-row d-block text-decoration-none"
         >
           <p class="mb-3 topic-line">
             <span class="topic-name">{{ article.topic }}</span>
@@ -87,14 +87,20 @@ useSeoMeta({
 }
 
 .topic-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
   font-size: clamp(0.875rem, 0.5vw + 0.74rem, 1rem);
   color: rgb(11 44 61 / 0.52);
   letter-spacing: 0.02em;
 }
 
 .topic-name {
-  font-weight: 600;
-  color: rgb(11 44 61 / 0.68);
+  font-weight: 700;
+  color: var(--ft-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .partition {
@@ -103,8 +109,9 @@ useSeoMeta({
 }
 
 .post-title {
-  font-size: clamp(1.2rem, 1.55vw + 0.76rem, 1.5625rem);
-  line-height: 1.3;
+  font-size: clamp(1.3rem, 1.65vw + 0.76rem, 1.75rem);
+  line-height: 1.25;
+  margin-bottom: 1rem;
 }
 
 .title-line {
@@ -114,31 +121,41 @@ useSeoMeta({
 }
 
 .summary-line {
-  color: rgb(11 44 61 / 0.58);
-  line-height: 1.65;
-  font-size: clamp(0.965rem, 0.85vw + 0.74rem, 1.11875rem);
-  max-width: 68ch;
+  color: rgb(11 44 61 / 0.7);
+  line-height: 1.8;
+  font-size: clamp(0.97rem, 0.85vw + 0.74rem, 1.13rem);
+  max-width: 64ch;
+  margin-bottom: 0;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
 }
 
 .post-row {
-  border-bottom: 1px solid rgb(11 44 61 / 0.08);
-  padding-left: 1rem;
-  margin-left: -1rem;
-  border-left: 4px solid transparent;
-  transition:
-    border-left-color 0.2s ease,
-    background-color 0.2s ease;
-  border-radius: 0 4px 4px 0;
-}
-
-.post-row:last-of-type {
-  border-bottom: none;
+  display: block;
+  background: #fff;
+  border: 1px solid rgb(11 44 61 / 0.08);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 12px 28px -24px rgba(11, 44, 61, 0.18);
 }
 
 .post-row:hover,
 .post-row:focus-visible {
-  border-left-color: var(--ft-accent);
-  background-color: rgb(31 169 113 / 0.04);
+  transform: translateY(-3px);
+  border-color: var(--ft-accent);
+  background-color: rgba(31, 169, 113, 0.08);
+  box-shadow: 0 22px 40px -26px rgba(11, 44, 61, 0.2);
+}
+
+.post-row:focus-visible {
+  outline: 2px solid rgba(31, 169, 113, 0.28);
+  outline-offset: 4px;
 }
 
 .post-row:focus-visible {

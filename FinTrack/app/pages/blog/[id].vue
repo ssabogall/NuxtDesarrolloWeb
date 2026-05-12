@@ -53,15 +53,17 @@ useSeoMeta({
       <div class="header-line mt-5" />
     </header>
 
-    <div class="body-copy">
-      <p
-        v-for="(paragraph, idx) in article.bodyParagraphs"
-        :key="idx"
-        class="mb-4 mb-xl-5 para"
-      >
-        {{ paragraph }}
-      </p>
-    </div>
+    <section class="article-body">
+      <div class="body-copy">
+        <p
+          v-for="(paragraph, idx) in article.bodyParagraphs"
+          :key="idx"
+          class="mb-4 mb-xl-5 para"
+        >
+          {{ paragraph }}
+        </p>
+      </div>
+    </section>
   </article>
 </template>
 
@@ -76,6 +78,21 @@ useSeoMeta({
   padding-inline: 0;
 }
 
+.article-shell > .article-hero {
+  background: rgba(31, 169, 113, 0.05);
+  border: 1px solid rgba(31, 169, 113, 0.12);
+  border-radius: 1.5rem;
+  padding: 2rem 2.25rem 2.5rem;
+}
+
+.article-body {
+  margin-top: 2.5rem;
+  background: #fff;
+  border: 1px solid rgb(11 44 61 / 0.08);
+  border-radius: 1.5rem;
+  padding: 2rem 2.25rem;
+}
+
 .link-back {
   color: rgb(11 44 61 / 0.45);
   font-weight: 500;
@@ -87,15 +104,32 @@ useSeoMeta({
 }
 
 .meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
   letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
 }
 
 .meta-topic {
-  font-weight: 600;
-  color: var(--ft-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
   text-transform: uppercase;
   font-size: clamp(0.7rem, 0.85vw + 0.52rem, 0.8125rem);
   letter-spacing: 0.14em;
+  background: var(--ft-accent);
+}
+
+.meta-id {
+  color: rgb(11 44 61 / 0.45);
+  font-weight: 500;
+  font-size: clamp(0.9375rem, 0.5vw + 0.8rem, 1.0625rem);
 }
 
 .meta-id {
@@ -121,9 +155,10 @@ useSeoMeta({
 
 .lead-soft {
   font-size: clamp(1.0625rem, 1vw + 0.9rem, 1.3125rem);
-  line-height: 1.68;
-  color: rgb(11 44 61 / 0.66);
+  line-height: 1.76;
+  color: rgb(11 44 61 / 0.7);
   max-width: min(72ch, 100%);
+  margin-bottom: 2rem;
 }
 
 .header-line {
@@ -133,10 +168,10 @@ useSeoMeta({
 
 .para {
   color: var(--ft-navy);
-  line-height: 1.76;
+  line-height: 1.88;
   font-size: clamp(1rem, 0.75vw + 0.82rem, 1.15625rem);
-  opacity: 0.93;
-  max-width: min(68ch, 100%);
+  opacity: 0.96;
+  max-width: min(72ch, 100%);
 }
 
 .body-copy .para:last-child {
