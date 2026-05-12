@@ -10,11 +10,13 @@ const route = useRoute()
     <div class="app-layout-inner">
       <aside class="sidebar">
         <div class="sidebar-brand-wrap">
-          <img
-            :src="logo"
-            alt="FinTrack Logo"
-            class="sidebar-logo"
-          />
+          <NuxtLink to="/">
+            <img
+              :src="logo"
+              alt="FinTrack Logo"
+              class="sidebar-logo"
+            />
+          </NuxtLink>
         </div>
 
         <nav class="sidebar-nav">
