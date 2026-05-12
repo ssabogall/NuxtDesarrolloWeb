@@ -121,7 +121,7 @@
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -132,59 +132,75 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 760px) {
   .features-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .feature-card {
-  background: #fff;
-  border: 1px solid rgb(11 44 61 / 0.1);
-  border-radius: 1rem;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(31, 169, 113, 0.15);
+  border-radius: 1.5rem;
+  padding: 2.25rem;
   text-align: center;
-  transition: box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
 }
 
 .feature-card:hover {
-  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(11, 44, 61, 0.2);
 }
 
 .feature-icon {
-  width: 4rem;
-  height: 4rem;
-  background: #1fa971;
+  width: 4.25rem;
+  height: 4.25rem;
+  background: linear-gradient(135deg, #1fa971 0%, #16a56a 100%);
   color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin: 0 auto 1.5rem;
+  box-shadow: 0 10px 20px -12px rgba(31, 169, 113, 0.5);
 }
 
 .feature-title {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #0b2c3d;
   margin: 0 0 1rem;
 }
 
 .feature-description {
   color: #64748b;
-  line-height: 1.6;
-  margin: 0 0 1.5rem;
+  line-height: 1.75;
+  margin: 0 0 2rem;
+  flex: 1;
 }
 
 .feature-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(31, 169, 113, 0.1);
   color: #1fa971;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .feature-link:hover {
-  color: #0b2c3d;
+  background: #1fa971;
+  color: #fff;
+  transform: translateY(-1px);
 }
 </style>

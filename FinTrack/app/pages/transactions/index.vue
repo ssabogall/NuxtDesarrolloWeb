@@ -28,7 +28,7 @@ const formatAmount = (amount: number) =>
       <div class="header-line" />
     </header>
 
-    <ul class="list-unstyled m-0 p-0">
+    <ul class="transactions-grid list-unstyled m-0 p-0">
       <li
         v-for="tx in transactions"
         :key="tx.id"
@@ -102,22 +102,32 @@ const formatAmount = (amount: number) =>
   background: rgb(11 44 61 / 0.1);
 }
 
+.transactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
 .topic-line {
   font-size: clamp(0.875rem, 0.5vw + 0.74rem, 1rem);
   color: rgb(11 44 61 / 0.52);
   letter-spacing: 0.02em;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .type-badge {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.8rem;
   border-radius: 999px;
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
 }
@@ -155,24 +165,31 @@ const formatAmount = (amount: number) =>
 .tx-amount--expense { color: #c0392b; }
 
 .post-row {
-  border-bottom: 1px solid rgb(11 44 61 / 0.08);
-  padding-left: 1rem;
-  margin-left: -1rem;
-  border-left: 4px solid transparent;
-  transition:
-    border-left-color 0.2s ease,
-    background-color 0.2s ease;
-  border-radius: 0 4px 4px 0;
-}
-
-.post-row:last-of-type {
-  border-bottom: none;
+  display: block;
+  background: #fff;
+  border: 1px solid rgb(11 44 61 / 0.08);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 10px 30px -22px rgba(11, 44, 61, 0.15);
 }
 
 .post-row:hover,
 .post-row:focus-visible {
-  border-left-color: var(--ft-accent);
-  background-color: rgb(31 169 113 / 0.04);
+  transform: translateY(-2px);
+  border-color: var(--ft-accent);
+  background-color: rgb(31 169 113 / 0.06);
+  box-shadow: 0 18px 36px -24px rgba(11, 44, 61, 0.2);
+}
+
+.post-row:focus-visible {
+  outline: 2px solid rgb(31 169 113 / 0.28);
+  outline-offset: 4px;
+}
+
+.post-row:hover .title-line,
+.post-row:focus-visible .title-line {
+  color: var(--ft-accent);
 }
 
 .post-row:focus-visible {
