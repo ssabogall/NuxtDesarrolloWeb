@@ -1,15 +1,8 @@
-<!-- author: all of us -->
-<!--
-  TransactionDetailCard
-  Responsabilidad: renderizar el hero visual de una transacción.
-  Recibe datos ya formateados — no hace cálculos ni llama a APIs.
-  Props tipadas con interfaces del dominio.
--->
 <script setup lang="ts">
-import type { TransactionDTO } from '~/types/transaction'
+import type { TransactionInterface } from '~/interfaces/TransactionInterface'
 
 interface Props {
-  transaction: TransactionDTO
+  transaction: TransactionInterface
   formattedAmount: string
   formattedDate: string
   amountSign: string
@@ -21,8 +14,6 @@ defineProps<Props>()
 
 <template>
   <header class="detail-card">
-
-    <!-- Tipo + fecha formateada -->
     <p class="mb-4 meta-line">
       <span
         class="meta-badge"
@@ -31,10 +22,8 @@ defineProps<Props>()
       <span class="meta-date">{{ formattedDate }}</span>
     </p>
 
-    <!-- Nombre de la transacción -->
     <h1 class="mb-5 transaction-name">{{ transaction.name }}</h1>
 
-    <!-- Monto — protagonista visual de la página -->
     <div class="amount-hero mb-5" aria-label="Transaction amount">
       <span
         class="amount-sign"
@@ -57,7 +46,6 @@ defineProps<Props>()
   --ft-accent: #1fa971;
 }
 
-/* ── Meta line: badge + fecha ── */
 .meta-line {
   display: flex;
   align-items: center;
@@ -74,6 +62,7 @@ defineProps<Props>()
   text-transform: uppercase;
   color: #fff;
 }
+
 .meta-badge--income  { background: #1fa971; }
 .meta-badge--expense { background: #c0392b; }
 
@@ -83,7 +72,6 @@ defineProps<Props>()
   letter-spacing: 0.03em;
 }
 
-/* ── Nombre ── */
 .transaction-name {
   color: var(--ft-navy);
   font-weight: 600;
@@ -92,7 +80,6 @@ defineProps<Props>()
   line-height: 1.17;
 }
 
-/* ── Monto — elemento de mayor jerarquía visual ── */
 .amount-hero {
   display: flex;
   align-items: baseline;
@@ -117,7 +104,6 @@ defineProps<Props>()
 .amount--income  { color: #1fa971; }
 .amount--expense { color: #c0392b; }
 
-/* ── Accent rule ── */
 .accent-rule {
   width: clamp(3rem, 5vw, 4rem);
   height: 4px;

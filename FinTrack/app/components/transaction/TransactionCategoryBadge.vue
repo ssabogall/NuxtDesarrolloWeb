@@ -1,15 +1,8 @@
-<!-- author: all of us -->
-<!--
-  TransactionCategoryBadge
-  Responsabilidad: mostrar la categoría asociada a una transacción
-  como tarjeta navegable hacia /categories/[slug].
-  Recibe solo los datos de la categoría — no conoce nada de la transacción padre.
--->
 <script setup lang="ts">
-import type { CategoryDTO } from '~/types/transaction'
+import type { CategoryInterface } from '~/interfaces/TransactionInterface'
 
 interface Props {
-  category: CategoryDTO
+  category: CategoryInterface
 }
 
 defineProps<Props>()
@@ -17,14 +10,12 @@ defineProps<Props>()
 
 <template>
   <section class="category-section">
-
     <p class="mb-4 section-label">Category</p>
 
     <NuxtLink
-      :to="`/categories/${category.slug}`"
+      :to="`/categories/${category.id}`"
       class="category-card text-decoration-none"
     >
-      <!-- Franja lateral con el color de la categoría -->
       <div
         class="category-card-stripe"
         :style="{ background: category.color }"
@@ -32,7 +23,6 @@ defineProps<Props>()
       />
 
       <div class="category-card-body">
-        <!-- Cabecera: badge tipo + nombre -->
         <div class="category-card-head mb-3">
           <span
             class="category-type-badge"
@@ -40,17 +30,13 @@ defineProps<Props>()
           >{{ category.type }}</span>
           <span class="category-title">{{ category.title }}</span>
         </div>
-
-        <!-- Descripción completa -->
         <p class="mb-0 category-description">{{ category.description }}</p>
       </div>
 
-      <!-- Flecha de navegación -->
       <div class="category-card-arrow" aria-hidden="true">
         <i class="fas fa-arrow-right" />
       </div>
     </NuxtLink>
-
   </section>
 </template>
 
@@ -60,7 +46,6 @@ defineProps<Props>()
   --ft-accent: #1fa971;
 }
 
-/* ── Section label — mismo patrón .mono-label del proyecto ── */
 .section-label {
   font-size: clamp(0.7rem, 0.85vw + 0.52rem, 0.8125rem);
   font-weight: 600;
@@ -69,7 +54,6 @@ defineProps<Props>()
   color: var(--ft-accent);
 }
 
-/* ── Tarjeta navegable ── */
 .category-card {
   display: flex;
   align-items: stretch;
@@ -90,7 +74,6 @@ defineProps<Props>()
   box-shadow: 0 4px 20px -4px rgb(31 169 113 / 0.15);
 }
 
-/* Franja lateral que comunica el color de la categoría */
 .category-card-stripe {
   width: 6px;
   flex-shrink: 0;
@@ -133,7 +116,6 @@ defineProps<Props>()
   max-width: 52ch;
 }
 
-/* Flecha derecha */
 .category-card-arrow {
   display: flex;
   align-items: center;

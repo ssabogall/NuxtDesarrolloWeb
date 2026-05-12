@@ -1,56 +1,38 @@
-<!-- author: all of us -->
 <script setup lang="ts">
+import { Formatters } from '~/utils/Formatters'
+
 const route = useRoute()
-const slug = computed(() => String(route.params.slug))
+const id    = computed(() => Number(route.params.id))
 
-// useFetch es reactivo al slug — si el usuario navega entre categorías
-// sin recargar, hace una nueva petición automáticamente.
-const { data, error } = await useFetch(() => `/api/categories/${slug.value}`)
+const { data, error } = await useFetch(() => `/api/categories/${id.value}`)
 
-// Nuxt redirige a la página de error si el servidor lanzó 404
 if (error.value) {
   throw createError({ statusCode: 404, statusMessage: 'Category not found' })
 }
 
-const category    = computed(() => data.value?.category)
+const category     = computed(() => data.value?.category)
 const transactions = computed(() => data.value?.transactions ?? [])
 
 useHead({
-  title: () =>
-    category.value ? `${category.value.name} — FinTrack` : 'Categories',
+  title: () => category.value ? `${category.value.title} — FinTrack` : 'Categories',
 })
 
 useSeoMeta({
   description: () => category.value?.description,
 })
-
-// Formatea amount como moneda USD
-const formatAmount = (amount: number) =>
-  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount)
 </script>
 
 <template>
-  <article
-    v-if="category"
-    class="article-shell"
-  >
-    <!-- Volver al listado — mismo patrón que blog/[id].vue -->
+  <article v-if="category" class="article-shell">
     <p class="mb-4 mb-lg-5">
-      <NuxtLink
-        class="link-back text-decoration-none"
-        to="/categories"
-      >
+      <NuxtLink class="link-back text-decoration-none" to="/categories">
         ← Categories
       </NuxtLink>
     </p>
 
     <header class="article-hero mb-5">
       <p class="mb-3 meta-line">
-        <!-- Badge coloreado igual que en el listado -->
-        <span
-          class="meta-badge"
-          :style="{ background: category.color }"
-        >{{ category.type }}</span>
+        <span class="meta-badge" :style="{ background: category.color }">{{ category.type }}</span>
       </p>
       <h1 class="mb-4 title-head">{{ category.title }}</h1>
       <div class="accent-rule" aria-hidden="true" />
@@ -58,41 +40,28 @@ const formatAmount = (amount: number) =>
       <div class="header-line mt-5" />
     </header>
 
-    <!-- ── Transacciones ───────────────────────────────────────────── -->
     <section class="transactions-section">
       <h2 class="section-title mb-4">
         Transactions
         <span class="tx-count">{{ transactions.length }}</span>
       </h2>
 
-      <!-- Estado vacío -->
-      <p
-        v-if="transactions.length === 0"
-        class="empty-state"
-      >
+      <p v-if="transactions.length === 0" class="empty-state">
         No transactions recorded for this category yet.
       </p>
 
-      <!-- Tabla de transacciones — sigue el mismo lenguaje visual del proyecto -->
-      <ul
-        v-else
-        class="list-unstyled m-0 p-0"
-      >
-        <li
-          v-for="tx in transactions"
-          :key="tx.id"
-          class="tx-row py-4"
-        >
+      <ul v-else class="list-unstyled m-0 p-0">
+        <li v-for="tx in transactions" :key="tx.id" class="tx-row py-4">
           <div class="tx-main">
             <span class="tx-description">{{ tx.name }}</span>
             <span
               class="tx-amount"
               :class="tx.type === 'income' ? 'tx-amount--income' : 'tx-amount--expense'"
             >
-              {{ tx.type === 'income' ? '+' : '-' }}{{ formatAmount(tx.amount) }}
+              {{ Formatters.signPrefix(tx.type) }}{{ Formatters.formatToCOP(tx.amount) }}
             </span>
           </div>
-          <p class="mb-0 tx-date">{{ tx.date }}</p>
+          <p class="mb-0 tx-date">{{ Formatters.formatDate(tx.date) }}</p>
         </li>
       </ul>
     </section>
@@ -110,7 +79,6 @@ const formatAmount = (amount: number) =>
   padding-inline: 0;
 }
 
-/* ── Back link ── */
 .link-back {
   color: rgb(11 44 61 / 0.45);
   font-weight: 500;
@@ -119,7 +87,6 @@ const formatAmount = (amount: number) =>
 
 .link-back:hover { color: var(--ft-accent); }
 
-/* ── Header ── */
 .meta-line { letter-spacing: 0.03em; }
 
 .meta-badge {
@@ -160,7 +127,6 @@ const formatAmount = (amount: number) =>
   background: rgb(11 44 61 / 0.1);
 }
 
-/* ── Transactions section ── */
 .section-title {
   font-size: clamp(1.1rem, 1.2vw + 0.75rem, 1.375rem);
   font-weight: 600;
@@ -189,7 +155,6 @@ const formatAmount = (amount: number) =>
   font-size: clamp(0.965rem, 0.85vw + 0.74rem, 1.11875rem);
 }
 
-/* Cada fila de transacción — mismo patrón visual que .post-row del blog */
 .tx-row {
   border-bottom: 1px solid rgb(11 44 61 / 0.08);
   padding-left: 1rem;

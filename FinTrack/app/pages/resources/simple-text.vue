@@ -45,7 +45,6 @@ useSeoMeta({
 .resource-article {
   --ft-navy: #0b2c3d;
   --ft-accent: #1fa971;
-
   width: 100%;
   max-width: min(75rem, 100%);
   margin-inline: auto;
@@ -56,10 +55,7 @@ useSeoMeta({
   font-weight: 500;
   font-size: clamp(0.9375rem, 0.85vw + 0.74rem, 1.0625rem);
 }
-
-.link-back:hover {
-  color: var(--ft-accent);
-}
+.link-back:hover { color: var(--ft-accent); }
 
 .meta-line {
   color: var(--ft-accent);
