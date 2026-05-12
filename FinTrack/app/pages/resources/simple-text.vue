@@ -13,26 +13,29 @@ useSeoMeta({
 <template>
   <article class="resource-article">
     <p class="mb-4 mb-lg-5">
-      <NuxtLink class="link-back text-decoration-none" to="/recursos">
+      <NuxtLink
+        class="link-back text-decoration-none"
+        to="/resources"
+      >
         ← Resources
       </NuxtLink>
     </p>
 
     <header class="article-hero mb-5">
-      <p class="mb-3 meta-line">Text sub-route</p>
+      <p class="mb-3 meta-line">Text subroute</p>
       <h1 class="mb-4 title-head">Simple text</h1>
       <div class="accent-rule" aria-hidden="true" />
       <p class="mb-0 mt-5 lead-soft">
-        This page demonstrates a lightweight sub-route, useful as an example of static content still living inside a CSR navigation.
+        This page exists to demonstrate a lightweight subroute, useful as an example of static content that still lives inside a CSR navigation.
       </p>
     </header>
 
     <div class="body-copy">
       <p class="mb-4 para">
-        In a Nuxt application, a section can switch to client-only rendering using route rules or page metadata. This allows the rest of the site to keep SSR while this part behaves like a SPA.
+        In a Nuxt app, a section can switch to client-only rendering using route rules or page metadata. That lets the rest of the site keep SSR while this part behaves like a SPA.
       </p>
       <p class="mb-4 para">
-        Here we use a main route with two sub-routes: one textual and one interactive.
+        Here we use a main route with two subroutes: one text-based and one interactive.
       </p>
     </div>
   </article>

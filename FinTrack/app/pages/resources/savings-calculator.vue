@@ -35,7 +35,7 @@ function applyScenario(scenario: SavingsScenario): void {
 <template>
   <section class="calculator-shell">
     <p class="mb-4 mb-lg-5">
-      <NuxtLink class="link-back text-decoration-none" to="/recursos">
+      <NuxtLink class="link-back text-decoration-none" to="/resources">
         ← Resources
       </NuxtLink>
     </p>
@@ -110,7 +110,7 @@ function applyScenario(scenario: SavingsScenario): void {
       <div class="col-12 col-xl-5">
         <div class="result-panel h-100">
           <p class="mb-2 result-kicker">Result</p>
-          <p class="mb-3 result-value">${{ projectedTotal.toLocaleString('es-CO') }}</p>
+          <p class="mb-3 result-value">${{ projectedTotal.toLocaleString('en-US') }}</p>
           <p class="mb-4 result-copy">
             Projected total at the end of the period with the current configuration.
           </p>
@@ -118,11 +118,11 @@ function applyScenario(scenario: SavingsScenario): void {
           <div class="result-grid">
             <div class="result-item">
               <span class="result-label">Initial</span>
-              <strong class="result-number">${{ initialAmount.toLocaleString('es-CO') }}</strong>
+              <strong class="result-number">${{ initialAmount.toLocaleString('en-US') }}</strong>
             </div>
             <div class="result-item">
               <span class="result-label">Monthly</span>
-              <strong class="result-number">${{ monthlyContribution.toLocaleString('es-CO') }}</strong>
+              <strong class="result-number">${{ monthlyContribution.toLocaleString('en-US') }}</strong>
             </div>
             <div class="result-item">
               <span class="result-label">Months</span>
@@ -220,7 +220,11 @@ function applyScenario(scenario: SavingsScenario): void {
   font-weight: 600;
   transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
 }
-.scenario-pill:hover { transform: translateY(-1px); background: rgb(31 169 113 / 0.14); border-color: rgb(31 169 113 / 0.4); }
+.scenario-pill:hover {
+  transform: translateY(-1px);
+  background: rgb(31 169 113 / 0.14);
+  border-color: rgb(31 169 113 / 0.4);
+}
 
 .result-panel {
   display: flex;
