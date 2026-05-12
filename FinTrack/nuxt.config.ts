@@ -13,8 +13,8 @@ export default defineNuxtConfig({
     '/transactions': { ssr: true },
     '/transactions/**': { ssr: true },
 
-    '/resources': { ssr: false },
-    '/resources/**': { ssr: false },
+    '/calculator': { ssr: false },
+    '/calculator/**': { ssr: false },
   },
 
   nitro: {
