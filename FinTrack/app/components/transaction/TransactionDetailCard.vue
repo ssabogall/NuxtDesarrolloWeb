@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { TransactionDTO } from '~/types/transaction'
+import type { TransactionInterface } from '~/interfaces/TransactionInterface'
 
 interface Props {
-  transaction: TransactionDTO
+  transaction: TransactionInterface
   formattedAmount: string
   formattedDate: string
   amountSign: string

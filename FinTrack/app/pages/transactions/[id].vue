@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TransactionDetailResponse } from '~/types/transaction'
+import type { TransactionDetailResponse } from '~/interfaces/TransactionInterface'
 
 const route = useRoute()
 const id    = computed(() => Number(route.params.id))

@@ -1,34 +1,24 @@
 <script setup lang="ts">
-type SavingsScenario = {
-  label: string
-  initialAmount: number
-  monthlyContribution: number
-  months: number
-}
+import type { SavingsScenario } from '~/interfaces/SavingsInterface'
 
-const initialAmount = ref<number>(250)
+definePageMeta({
+  title: 'Savings calculator',
+  ssr: false,
+})
+
+useSeoMeta({
+  title: 'Savings calculator - FinTrack',
+  description: 'A lightweight client-side calculator for savings planning.',
+})
+
+const initialAmount       = ref<number>(250)
 const monthlyContribution = ref<number>(300)
-const months = ref<number>(12)
+const months              = ref<number>(12)
 
 const scenarios: readonly SavingsScenario[] = [
-  {
-    label: 'Ahorro de emergencia',
-    initialAmount: 100,
-    monthlyContribution: 200,
-    months: 18,
-  },
-  {
-    label: 'Viaje corto',
-    initialAmount: 0,
-    monthlyContribution: 350,
-    months: 8,
-  },
-  {
-    label: 'Compra importante',
-    initialAmount: 500,
-    monthlyContribution: 400,
-    months: 10,
-  },
+  { label: 'Emergency fund', initialAmount: 100, monthlyContribution: 200, months: 18 },
+  { label: 'Short trip',     initialAmount: 0,   monthlyContribution: 350, months: 8  },
+  { label: 'Big purchase',   initialAmount: 500, monthlyContribution: 400, months: 10 },
 ] as const
 
 const projectedTotal = computed<number>(
@@ -36,53 +26,35 @@ const projectedTotal = computed<number>(
 )
 
 function applyScenario(scenario: SavingsScenario): void {
-  initialAmount.value = scenario.initialAmount
+  initialAmount.value       = scenario.initialAmount
   monthlyContribution.value = scenario.monthlyContribution
-  months.value = scenario.months
+  months.value              = scenario.months
 }
-
-useSeoMeta({
-  title: 'Calculadora de ahorro - FinTrack',
-  description: 'A tiny client-side calculator for savings planning.',
-})
-
-definePageMeta({
-  title: 'Calculadora de ahorro',
-  ssr: false,
-})
 </script>
 
 <template>
   <section class="calculator-shell">
     <p class="mb-4 mb-lg-5">
-      <NuxtLink
-        class="link-back text-decoration-none"
-        to="/recursos"
-      >
-        ← Recursos
+      <NuxtLink class="link-back text-decoration-none" to="/recursos">
+        ← Resources
       </NuxtLink>
     </p>
 
     <header class="calculator-hero mb-5">
-      <p class="mb-3 meta-line">Subruta interactiva</p>
-      <h1 class="mb-4 title-head">Calculadora de ahorro</h1>
+      <p class="mb-3 meta-line">Interactive sub-route</p>
+      <h1 class="mb-4 title-head">Savings calculator</h1>
       <div class="accent-rule" aria-hidden="true" />
       <p class="mb-0 mt-5 lead-soft">
-        Ajusta el ahorro inicial, la contribución mensual y la cantidad de meses para ver el total proyectado.
+        Adjust the initial amount, monthly contribution, and number of months to see the projected total.
       </p>
     </header>
 
     <div class="row g-4 align-items-stretch">
       <div class="col-12 col-xl-7">
-        <div class="panel card-inputs h-100">
+        <div class="panel h-100">
           <div class="row g-4">
             <div class="col-12 col-md-4">
-              <label
-                class="form-label field-label"
-                for="initialAmount"
-              >
-                Aporte inicial
-              </label>
+              <label class="form-label field-label" for="initialAmount">Initial amount</label>
               <input
                 id="initialAmount"
                 v-model.number="initialAmount"
@@ -94,12 +66,7 @@ definePageMeta({
             </div>
 
             <div class="col-12 col-md-4">
-              <label
-                class="form-label field-label"
-                for="monthlyContribution"
-              >
-                Aporte mensual
-              </label>
+              <label class="form-label field-label" for="monthlyContribution">Monthly contribution</label>
               <input
                 id="monthlyContribution"
                 v-model.number="monthlyContribution"
@@ -111,12 +78,7 @@ definePageMeta({
             </div>
 
             <div class="col-12 col-md-4">
-              <label
-                class="form-label field-label"
-                for="months"
-              >
-                Meses
-              </label>
+              <label class="form-label field-label" for="months">Months</label>
               <input
                 id="months"
                 v-model.number="months"
@@ -128,8 +90,8 @@ definePageMeta({
             </div>
           </div>
 
-          <div class="scenario-list mt-4">
-            <p class="mb-3 scenario-kicker">Ejemplos rápidos</p>
+          <div class="mt-4">
+            <p class="mb-3 scenario-kicker">Quick examples</p>
             <div class="d-flex flex-wrap gap-2">
               <button
                 v-for="scenario in scenarios"
@@ -147,29 +109,23 @@ definePageMeta({
 
       <div class="col-12 col-xl-5">
         <div class="result-panel h-100">
-          <p class="mb-2 result-kicker">Resultado</p>
-          <p class="mb-3 result-value">
-            ${{ projectedTotal.toLocaleString('es-CO') }}
-          </p>
+          <p class="mb-2 result-kicker">Result</p>
+          <p class="mb-3 result-value">${{ projectedTotal.toLocaleString('es-CO') }}</p>
           <p class="mb-4 result-copy">
-            Ese es el monto proyectado al final del periodo con la configuración actual.
+            Projected total at the end of the period with the current configuration.
           </p>
 
           <div class="result-grid">
             <div class="result-item">
-              <span class="result-label">Inicial</span>
-              <strong class="result-number">
-                ${{ initialAmount.toLocaleString('es-CO') }}
-              </strong>
+              <span class="result-label">Initial</span>
+              <strong class="result-number">${{ initialAmount.toLocaleString('es-CO') }}</strong>
             </div>
             <div class="result-item">
-              <span class="result-label">Mensual</span>
-              <strong class="result-number">
-                ${{ monthlyContribution.toLocaleString('es-CO') }}
-              </strong>
+              <span class="result-label">Monthly</span>
+              <strong class="result-number">${{ monthlyContribution.toLocaleString('es-CO') }}</strong>
             </div>
             <div class="result-item">
-              <span class="result-label">Meses</span>
+              <span class="result-label">Months</span>
               <strong class="result-number">{{ months }}</strong>
             </div>
           </div>
@@ -183,7 +139,6 @@ definePageMeta({
 .calculator-shell {
   --ft-navy: #0b2c3d;
   --ft-accent: #1fa971;
-
   width: 100%;
   max-width: min(75rem, 100%);
   margin-inline: auto;
@@ -194,10 +149,7 @@ definePageMeta({
   font-weight: 500;
   font-size: clamp(0.9375rem, 0.85vw + 0.74rem, 1.0625rem);
 }
-
-.link-back:hover {
-  color: var(--ft-accent);
-}
+.link-back:hover { color: var(--ft-accent); }
 
 .meta-line {
   color: var(--ft-accent);
@@ -238,17 +190,13 @@ definePageMeta({
   padding: 1.5rem;
 }
 
-.field-label {
-  color: var(--ft-navy);
-  font-weight: 600;
-}
+.field-label { color: var(--ft-navy); font-weight: 600; }
 
 .field-input {
   border-color: rgb(11 44 61 / 0.16);
   border-radius: 0.9rem;
   padding-block: 0.8rem;
 }
-
 .field-input:focus {
   border-color: rgb(31 169 113 / 0.45);
   box-shadow: 0 0 0 0.2rem rgb(31 169 113 / 0.14);
@@ -270,31 +218,15 @@ definePageMeta({
   background: rgb(31 169 113 / 0.07);
   color: var(--ft-navy);
   font-weight: 600;
-  transition:
-    transform 0.18s ease,
-    background-color 0.18s ease,
-    border-color 0.18s ease;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
 }
-
-.scenario-pill:hover,
-.scenario-pill:focus-visible {
-  transform: translateY(-1px);
-  background: rgb(31 169 113 / 0.14);
-  border-color: rgb(31 169 113 / 0.4);
-}
-
-.scenario-pill:focus-visible {
-  outline: 2px solid rgb(31 169 113 / 0.3);
-  outline-offset: 3px;
-}
+.scenario-pill:hover { transform: translateY(-1px); background: rgb(31 169 113 / 0.14); border-color: rgb(31 169 113 / 0.4); }
 
 .result-panel {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background:
-    linear-gradient(180deg, rgb(31 169 113 / 0.1), transparent 58%),
-    #fff;
+  background: linear-gradient(180deg, rgb(31 169 113 / 0.1), transparent 58%), #fff;
 }
 
 .result-value {
@@ -305,15 +237,9 @@ definePageMeta({
   line-height: 1;
 }
 
-.result-copy {
-  color: rgb(11 44 61 / 0.66);
-  line-height: 1.7;
-}
+.result-copy { color: rgb(11 44 61 / 0.66); line-height: 1.7; }
 
-.result-grid {
-  display: grid;
-  gap: 0.85rem;
-}
+.result-grid { display: grid; gap: 0.85rem; }
 
 .result-item {
   display: flex;
@@ -325,13 +251,6 @@ definePageMeta({
   background: rgb(11 44 61 / 0.03);
 }
 
-.result-label {
-  color: rgb(11 44 61 / 0.6);
-  font-weight: 500;
-}
-
-.result-number {
-  color: var(--ft-navy);
-  font-size: 1.05rem;
-}
+.result-label { color: rgb(11 44 61 / 0.6); font-weight: 500; }
+.result-number { color: var(--ft-navy); font-size: 1.05rem; }
 </style>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  title: 'Texto simple',
+  title: 'Simple text',
   ssr: false,
 })
 
 useSeoMeta({
-  title: 'Texto simple - Recursos',
+  title: 'Simple text - Resources',
   description: 'A short text page rendered entirely on the client.',
 })
 </script>
@@ -13,29 +13,26 @@ useSeoMeta({
 <template>
   <article class="resource-article">
     <p class="mb-4 mb-lg-5">
-      <NuxtLink
-        class="link-back text-decoration-none"
-        to="/recursos"
-      >
-        ← Recursos
+      <NuxtLink class="link-back text-decoration-none" to="/recursos">
+        ← Resources
       </NuxtLink>
     </p>
 
     <header class="article-hero mb-5">
-      <p class="mb-3 meta-line">Subruta de texto</p>
-      <h1 class="mb-4 title-head">Texto simple</h1>
+      <p class="mb-3 meta-line">Text sub-route</p>
+      <h1 class="mb-4 title-head">Simple text</h1>
       <div class="accent-rule" aria-hidden="true" />
       <p class="mb-0 mt-5 lead-soft">
-        Esta página existe para demostrar una subruta ligera, útil como ejemplo de contenido estático que todavía vive dentro de una navegación CSR.
+        This page demonstrates a lightweight sub-route, useful as an example of static content still living inside a CSR navigation.
       </p>
     </header>
 
     <div class="body-copy">
       <p class="mb-4 para">
-        En una aplicación Nuxt, una sección puede cambiar a cliente solamente usando reglas de ruta o metadatos de página. Eso permite que el resto del sitio siga con SSR mientras esta parte se comporta como una SPA.
+        In a Nuxt application, a section can switch to client-only rendering using route rules or page metadata. This allows the rest of the site to keep SSR while this part behaves like a SPA.
       </p>
       <p class="mb-4 para">
-        Aquí usamos una ruta principal con dos subrutas: una textual y otra interactiva.
+        Here we use a main route with two sub-routes: one textual and one interactive.
       </p>
     </div>
   </article>
@@ -45,7 +42,6 @@ useSeoMeta({
 .resource-article {
   --ft-navy: #0b2c3d;
   --ft-accent: #1fa971;
-
   width: 100%;
   max-width: min(75rem, 100%);
   margin-inline: auto;
@@ -56,10 +52,7 @@ useSeoMeta({
   font-weight: 500;
   font-size: clamp(0.9375rem, 0.85vw + 0.74rem, 1.0625rem);
 }
-
-.link-back:hover {
-  color: var(--ft-accent);
-}
+.link-back:hover { color: var(--ft-accent); }
 
 .meta-line {
   color: var(--ft-accent);

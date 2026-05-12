@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { CategoryDTO } from '~/types/transaction'
+import type { CategoryInterface } from '~/interfaces/TransactionInterface'
 
 interface Props {
-  category: CategoryDTO
+  category: CategoryInterface
 }
 
 defineProps<Props>()
