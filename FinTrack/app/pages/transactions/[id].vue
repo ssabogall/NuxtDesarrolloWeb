@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { TransactionDetailResponse } from '~/interfaces/TransactionInterface'
+import { Formatters } from '~/utils/Formatters'
 
 const route = useRoute()
 const id    = computed(() => Number(route.params.id))

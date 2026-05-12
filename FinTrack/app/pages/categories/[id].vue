@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Formatters } from '~/utils/Formatters'
+
 const route = useRoute()
 const id    = computed(() => Number(route.params.id))
 

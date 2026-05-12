@@ -36,7 +36,6 @@ const route = useRoute()
             <span>Resources</span>
           </NuxtLink>
 
-          <!-- Categories — nueva sección SSR -->
           <NuxtLink
             to="/categories"
             class="nav-row"
@@ -46,7 +45,6 @@ const route = useRoute()
             <span>Categories</span>
           </NuxtLink>
 
-          <!-- Transactions — nueva sección SSR -->
           <NuxtLink
             to="/transactions"
             class="nav-row"
