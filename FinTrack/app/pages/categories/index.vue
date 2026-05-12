@@ -30,7 +30,7 @@ useSeoMeta({
         :key="category.slug"
       >
         <NuxtLink
-          :to="`/categories/${category.slug}`"
+          :to="`/categories/${category.id}`"
           class="post-row d-block text-decoration-none py-5"
         >
           <p class="mb-3 topic-line">

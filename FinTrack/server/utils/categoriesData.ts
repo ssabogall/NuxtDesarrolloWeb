@@ -108,6 +108,10 @@ export function getCategoryBySlug(slug: string): Category | undefined {
   return _categories.find((c) => c.slug === slug)
 }
 
+export function getCategoryById(id: number): Category | undefined {
+  return _categories.find((c) => c.id === id)
+}
+
 export function getTransactions(): readonly Transaction[] {
   return _transactions
 }
@@ -118,4 +122,10 @@ export function getTransactionById(id: number): Transaction | undefined {
 
 export function getTransactionsBySlug(slug: string): readonly Transaction[] {
   return _transactions.filter((t) => t.categorySlug === slug)
+}
+
+export function getTransactionsByCategoryId(categoryId: number): readonly Transaction[] {
+  const category = _categories.find((c) => c.id === categoryId)
+  if (!category) return []
+  return _transactions.filter((t) => t.categorySlug === category.slug)
 }
